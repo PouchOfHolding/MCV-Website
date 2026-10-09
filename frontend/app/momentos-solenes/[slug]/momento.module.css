@@ -1,0 +1,28 @@
+.page {
+    min-height: 100vh;
+    background: var(--navy);
+    color: white;
+    padding: 80px clamp(24px, 6vw, 100px);
+}
+
+.wobbleWrapper {
+    perspective: 900px;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.wobbleImage {
+    height: 340px;
+    width: auto;
+    animation: wobble 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes wobble {
+    0%   { transform: rotateY(0deg) rotateX(0deg) scale(1); }
+    25%  { transform: rotateY(10deg) rotateX(3deg) scale(1.02); }
+    50%  { transform: rotateY(0deg) rotateX(-2deg) scale(1); }
+    75%  { transform: rotateY(-10deg) rotateX(3deg) scale(1.02); }
+    100% { transform: rotateY(0deg) rotateX(0deg) scale(1); }
+}

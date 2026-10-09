@@ -1,0 +1,33 @@
+services:
+  postgres-db:
+    image: postgres:16-alpine
+    container_name: mcv-postgres-db
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mcv-rest-api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mcv-rest-api
+    ports:
+      - "${MCV_API_PORT}:8080"
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

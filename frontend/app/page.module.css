@@ -1,0 +1,176 @@
+.hero {
+    /* Set to 100vh so the hero image fills the full height of the screen */
+    min-height: 74vh; 
+    padding: 100px clamp(24px, 12vw, 184px) 60px;
+    
+    /* Moved background properties here, replacing the solid navy background */
+    background-image: linear-gradient(rgba(16,37,57,.55), rgba(16,37,57,.55)), url('/images/noite.jpg');
+    background-color: var(--navy); /* Keeps a fallback color while the image loads */
+    background-size: cover;
+    background-position: center;
+    
+    color: white;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-watermark {
+    position: absolute;
+    right: clamp(-40px, 2vw, 60px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(280px, 30vw, 460px);
+    height: auto;
+    opacity: .15;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+    top: -300px;  
+    left:-140px;
+}
+
+.hero h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    font-size: clamp(40px, 5.5vw, 68px);
+    margin: 0;
+}
+
+.hero-copy {
+    max-width: 480px;
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(255,255,255,.76);
+    margin: 24px 0 32px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 16px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .2s;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 10px;
+    font-weight: 700;
+    margin: 0 0 24px;
+}
+
+.eyebrow span {
+    width: 34px;
+    height: 1px;
+    background: var(--gold);
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 11px 0 0;
+}
+
+.light {
+    color: rgba(255,255,255,.75);
+}
+
+/* --- QUEM SOMOS SECTION --- */
+
+.about-section {
+    background-color: #ffffff;
+    padding: 100px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-square {
+    max-width: 650px;
+    text-align: center;
+}
+
+.about-eyebrow {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+}
+
+.about-square h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 32px;
+}
+
+.about-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 15px;
+    line-height: 2.2;
+    color: #64748b;
+    margin: 0;
+    text-align: justify;
+}
+
+.closing-section {
+    padding: 125px 24px;
+    text-align: center;
+    background: var(--navy);
+    color: white;
+    position: relative;
+}
+
+.closing-section h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: -3.5px;
+    line-height: .93;
+    font-size: clamp(48px, 5.9vw, 20px);
+    margin: 0;
+}
+
+.closing-section h2 em {
+    font-weight: 400;
+    color: var(--gold);
+}
+
+@media (max-width: 720px) {
+
+    .hero {
+        /* Changed from auto to 100vh so the photo still looks good and isn't cut off on mobile */
+        min-height: 100vh;
+        padding: 70px 24px 60px;
+    }
+    .hero-watermark {
+        display: none;
+    }
+    .about-section {
+        padding: 60px 24px;
+    }
+    .about-text {
+        text-align: left;
+        font-size: 15px;
+    }
+    .closing-section {
+        padding: 95px 24px;
+    }
+}
